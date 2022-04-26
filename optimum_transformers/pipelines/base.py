@@ -47,6 +47,7 @@ def create_model_for_providers(model_path: str) -> InferenceSession:
 
     # Load the model as a graph and prepare the CPU backend
     session = InferenceSession(str(model_path), options)
+    sess.set_providers(['CUDAExecutionProvider'])
     session.disable_fallback()
 
     return session
